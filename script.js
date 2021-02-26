@@ -15,6 +15,13 @@ function rowPlus() {
   rowCount++;
 };
 
+function rowMinus() {
+  if(rowCount > 0){
+    cellsTable.removeChild(cellsTable.lastChild);
+    rowCount--;
+  }
+};
+
 function colPlus() {
   let children = Array.from(cellsTable.children);
   children.forEach((row) => {
