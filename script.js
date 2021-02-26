@@ -42,3 +42,10 @@ function colMinus() {
     colCount--;
   }
 };
+
+let colorSelector = document.getElementById("select-color");
+let color;
+function updateColor() {
+  color = colorSelector.value;
+};
+updateColor();
