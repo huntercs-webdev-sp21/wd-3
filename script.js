@@ -66,6 +66,10 @@ function fillUncolored() {
   });
 }
 
+function fillAll() {
+  getAllCells().forEach(cell => cell.click());
+}
+
 rowPlus();
 colPlus();
 updateColor();
