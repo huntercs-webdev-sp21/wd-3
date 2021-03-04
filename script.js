@@ -3,7 +3,7 @@ let colCount = 0;
 let cellsTable = document.getElementById("cells");
 
 function colorCell(event) {
-  event.target.style = `background-color: ${color}`
+  event.target.style.backgroundColor = color;
 }
 
 function createCell() {
@@ -23,7 +23,7 @@ function rowPlus() {
 };
 
 function rowMinus() {
-  if(rowCount > 0){
+  if (rowCount > 0) {
     cellsTable.removeChild(cellsTable.lastChild);
     rowCount--;
   }
@@ -39,7 +39,7 @@ function colPlus() {
 };
 
 function colMinus() {
-  if(colCount > 0){
+  if (colCount > 0) {
     let children = Array.from(cellsTable.children);
     children.forEach((row) => {
       row.removeChild(row.lastChild);
@@ -53,6 +53,18 @@ let color;
 function updateColor() {
   color = colorSelector.value;
 };
+
+function getAllCells() {
+  return Array.from(cellsTable.children)
+    .map(tr => Array.from(tr.children))
+    .flat();
+}
+
+function fillUncolored() {
+  getAllCells().forEach(cell => {
+    if (cell.style.backgroundColor === "") cell.click()
+  });
+}
 
 rowPlus();
 colPlus();
