@@ -70,6 +70,10 @@ function fillAll() {
   getAllCells().forEach(cell => cell.click());
 }
 
+function clearAll() {
+  getAllCells().forEach(cell => cell.style.backgroundColor = "");
+}
+
 rowPlus();
 colPlus();
 updateColor();
