@@ -2,13 +2,20 @@ let rowCount = 0;
 let colCount = 0;
 let cellsTable = document.getElementById("cells");
 
+function colorCell(event) {
+  event.target.style = `background-color: ${color}`
+}
+
+function createCell() {
+  const cell = document.createElement("td");
+  cell.addEventListener("click", colorCell);
+  return cell
+}
 
 function rowPlus() {
   let newRow = document.createElement("tr");
   for (let i = 0; i < colCount; i++) {
-    let newCell = document.createElement("td");
-    // newCell.addEventListener("click",colorCell);
-    // newCell.addEventListener("mouseover",colorCellDrag);
+    let newCell = createCell();
     newRow.appendChild(newCell);
   }
   cellsTable.appendChild(newRow);
@@ -25,9 +32,7 @@ function rowMinus() {
 function colPlus() {
   let children = Array.from(cellsTable.children);
   children.forEach((row) => {
-    let newCell = document.createElement("td");
-    // newCell.addEventListener("click",colorCell);
-    // newCell.addEventListener("mouseover",colorCellDrag);
+    let newCell = createCell();
     row.appendChild(newCell);
   });
   colCount++;
@@ -48,4 +53,7 @@ let color;
 function updateColor() {
   color = colorSelector.value;
 };
+
+rowPlus();
+colPlus();
 updateColor();
